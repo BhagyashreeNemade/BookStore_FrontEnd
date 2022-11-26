@@ -17,13 +17,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { LoginComponent } from './login/login.component';
+import { ForgetComponent } from './Component/forget/forget.component';
+import { ResetComponent } from './Component/reset/reset.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    ForgetComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
