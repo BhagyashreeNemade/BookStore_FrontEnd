@@ -16,7 +16,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './Component/login/login.component';
 import { ForgetComponent } from './Component/forget/forget.component';
 import { ResetComponent } from './Component/reset/reset.component';
 

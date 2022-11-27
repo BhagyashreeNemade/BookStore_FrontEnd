@@ -5,12 +5,12 @@
     </div>
     <div class="div-2">
         <span style="font-size: 20px;">Reset Your Password</span>
-        <form  class="formclass">
+        <form  class="formclass" [formGroup]="resetForm">
             <span style="opacity: .6;">Enter your new password below</span>
             <div style="display: flex; flex-direction:column; margin-top: 20px;">
                 <span>New Password</span>
                 <mat-form-field appearance="outline">
-                    <input matInput type="text" class="input-field" >
+                    <input matInput type="text" class="input-field" formControlName="password">
                     <mat-error>Enter Password</mat-error>
                 </mat-form-field>
             </div>
@@ -19,6 +19,6 @@
         </form>
        
         <div style=" width: 36%;">
-            <button mat-flat-button class="btn">LOGIN</button>
+            <button mat-flat-button class="btn" routerLink="/login">LOGIN</button>
         </div>
 </div>
