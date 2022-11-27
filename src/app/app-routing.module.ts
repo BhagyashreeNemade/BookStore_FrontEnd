@@ -4,12 +4,14 @@ import { LoginComponent } from './Component/login/login.component';
 import { ForgetComponent } from './Component/forget/forget.component';
 import { ResetComponent } from './Component/reset/reset.component';
 import { SignupComponent } from './Component/signup/signup.component';
+import { HomeComponent } from './Component/home/home.component';
 
 const routes: Routes = [
   {path:'register', component:SignupComponent},
   {path:'login', component:LoginComponent},
   {path:'forgot', component : ForgetComponent},
-  {path:'reset/:token', component : ResetComponent}
+  {path:'reset/:token', component : ResetComponent},
+  {path :'home', component : HomeComponent}
   
 
 ];

@@ -13,7 +13,7 @@
             </button>
         </div>
         <div>
-            <form [formGroup] = "RegisterForm" style="align-items: center;">
+            <form [formGroup] = "RegisterForm" (ngSubmit) = "onSubmit()" style="align-items: center;">
                 <div style="display: flex; flex-direction:column;">
                     <span>Full Name</span>
                     <mat-form-field appearance="outline">

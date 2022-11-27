@@ -19,6 +19,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { LoginComponent } from './Component/login/login.component';
 import { ForgetComponent } from './Component/forget/forget.component';
 import { ResetComponent } from './Component/reset/reset.component';
+import { HomeComponent } from './Component/home/home.component';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { ResetComponent } from './Component/reset/reset.component';
     SignupComponent,
     LoginComponent,
     ForgetComponent,
-    ResetComponent
+    ResetComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

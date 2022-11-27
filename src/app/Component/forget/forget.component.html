@@ -5,7 +5,7 @@
     </div>
     <div class="div-2">
         <span style="font-size: 20px;">Forgot Your Password?</span>
-        <form  class="formclass" [formGroup]="forgotForm">
+        <form [formGroup]="forgotForm" (ngSubmit)="onSubmit()" class="formclass">
             <span style="opacity: .6;">Enter your email address and wee will send you a link to reset your password</span>
             <div style="display: flex; flex-direction:column; margin-top: 20px;">
                 <span>Email Id</span>
@@ -14,11 +14,9 @@
                     <mat-error>Enter Email</mat-error>
                 </mat-form-field>
             </div>
-            <button class="buttons button-signup" style="margin-top: 20px;" routerLink="/reset">Reset Password</button>
+            <button class="buttons button-signup" style="margin-top: 20px;">Reset Password</button>
             
         </form>
-       
-        <div style=" width: 51.5%;">
-            <button mat-flat-button class="btn" routerLink="/register">Create Account</button>
-        </div>
+        <button class="buttons ca">CREATE ACCOUNT</button>
+        
 </div>

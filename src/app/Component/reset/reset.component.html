@@ -5,13 +5,20 @@
     </div>
     <div class="div-2">
         <span style="font-size: 20px;">Reset Your Password</span>
-        <form  class="formclass" [formGroup]="resetForm">
+        <form  class="formclass" [formGroup]="resetForm" (ngSubmit)="onSubmit()">
             <span style="opacity: .6;">Enter your new password below</span>
             <div style="display: flex; flex-direction:column; margin-top: 20px;">
-                <span>New Password</span>
+                <span>Password</span>
                 <mat-form-field appearance="outline">
                     <input matInput type="text" class="input-field" formControlName="password">
                     <mat-error>Enter Password</mat-error>
+                </mat-form-field>
+            </div>
+            <div style="display: flex; flex-direction:column; margin-top: 20px;">
+                <span>Confirm Password</span>
+                <mat-form-field appearance="outline">
+                    <input matInput type="text" class="input-field" formControlName="confirmPassword">
+                    <mat-error>Enter Confirm Password</mat-error>
                 </mat-form-field>
             </div>
             <button class="buttons button-signup" style="margin-top: 20px;">Confirm</button>
