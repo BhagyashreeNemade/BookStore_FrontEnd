@@ -19,4 +19,15 @@ getallbooks(){
   console.log(this.token);
   return this.httpService.getService('https://localhost:44349/api/Book/GetAllBook',true, header);
 }
+getBookById(bookId:any){
+  let header = {
+    headers : new HttpHeaders ({
+      'Content-type':'application/json',
+      'Authorization':'Bearer '+this.token
+    })
+  }
+  return this.httpService.getService('https://localhost:44349/api/Book/GetBookById?BookId='+bookId, true, header);
 }
+}
+
+

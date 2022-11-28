@@ -6,6 +6,7 @@ import { ResetComponent } from './Component/reset/reset.component';
 import { SignupComponent } from './Component/signup/signup.component';
 import { HomeComponent } from './Component/home/home.component';
 import { GetBooksComponent } from './Component/get-books/get-books.component';
+import { QuickViewComponent } from './Component/quick-view/quick-view.component';
 
 const routes: Routes = [
   {path:'register', component:SignupComponent},
@@ -15,10 +16,10 @@ const routes: Routes = [
   {path :'home', component : HomeComponent,
   children : [
     {path:'', redirectTo:"/home/getbooks", pathMatch:'full' },
-    { path : 'getbooks', component:GetBooksComponent}
+    { path : 'getbooks', component:GetBooksComponent},
+    { path : 'quickView', component:QuickViewComponent},
   ]
 }
-
 
 ];
 

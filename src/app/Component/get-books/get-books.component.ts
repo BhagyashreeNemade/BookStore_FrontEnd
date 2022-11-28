@@ -11,7 +11,7 @@ export class GetBooksComponent implements OnInit {
 
   bookList : any;
   totalBooks: any;
-  constructor(private bookService : BookServiceService) { }
+  constructor(private bookService : BookServiceService, private route : Router) { }
 
   ngOnInit(): void {
     this.onSubmit()
@@ -26,5 +26,11 @@ export class GetBooksComponent implements OnInit {
       console.log(this.totalBooks)
     })
   }
+  quickView(books : any){
+    console.log(books.bookId)
+    localStorage.setItem('bookId', books.bookId);
+    this.route.navigateByUrl("/home/quickView")
+  }
+
 
 }
