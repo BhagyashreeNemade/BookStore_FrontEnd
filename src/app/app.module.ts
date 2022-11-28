@@ -20,6 +20,7 @@ import { LoginComponent } from './Component/login/login.component';
 import { ForgetComponent } from './Component/forget/forget.component';
 import { ResetComponent } from './Component/reset/reset.component';
 import { HomeComponent } from './Component/home/home.component';
+import { GetBooksComponent } from './Component/get-books/get-books.component';
 
 
 
@@ -30,7 +31,8 @@ import { HomeComponent } from './Component/home/home.component';
     LoginComponent,
     ForgetComponent,
     ResetComponent,
-    HomeComponent
+    HomeComponent,
+    GetBooksComponent
   ],
   imports: [
     BrowserModule,
