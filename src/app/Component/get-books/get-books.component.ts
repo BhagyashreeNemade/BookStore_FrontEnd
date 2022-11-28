@@ -10,6 +10,7 @@ import { BookServiceService } from 'src/app/services/book-service.service';
 export class GetBooksComponent implements OnInit {
 
   bookList : any;
+  totalBooks: any;
   constructor(private bookService : BookServiceService) { }
 
   ngOnInit(): void {
@@ -19,7 +20,10 @@ export class GetBooksComponent implements OnInit {
   onSubmit(){
     this.bookService.getallbooks().subscribe((response : any) =>{
       console.log(response);
-      this.bookList = response;
+      this.bookList = response.data;
+      this.totalBooks = response.data.length;
+      console.log(this.bookList);
+      console.log(this.totalBooks)
     })
   }
 

@@ -21,6 +21,7 @@ import { ForgetComponent } from './Component/forget/forget.component';
 import { ResetComponent } from './Component/reset/reset.component';
 import { HomeComponent } from './Component/home/home.component';
 import { GetBooksComponent } from './Component/get-books/get-books.component';
+import { QuickViewComponent } from './Component/quick-view/quick-view.component';
 
 
 
@@ -32,7 +33,8 @@ import { GetBooksComponent } from './Component/get-books/get-books.component';
     ForgetComponent,
     ResetComponent,
     HomeComponent,
-    GetBooksComponent
+    GetBooksComponent,
+    QuickViewComponent
   ],
   imports: [
     BrowserModule,
