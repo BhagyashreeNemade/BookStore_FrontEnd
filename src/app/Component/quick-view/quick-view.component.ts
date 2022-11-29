@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/services/book-service.service';
+import { CartServiceService } from 'src/app/services/cart-service.service';
 import { FeedbackServiceService } from 'src/app/services/feedback-service.service';
 import { WishlistServiceService } from 'src/app/services/wishlist-service.service';
 
@@ -16,7 +17,7 @@ export class QuickViewComponent implements OnInit {
   star: any;
   feedbackList : any;
   books: any;
-  constructor(private getBook: BookServiceService, private feedback : FeedbackServiceService,private wishservice: WishlistServiceService) { }
+  constructor(private getBook: BookServiceService, private feedback : FeedbackServiceService,private wishservice: WishlistServiceService,private cart:CartServiceService) { }
 
   ngOnInit(): void {
     this.getbook()
@@ -76,5 +77,14 @@ export class QuickViewComponent implements OnInit {
     this.wishservice.addToWishlist(reqData,this.bookId).subscribe((response: any) => {
       console.log("Added to wishlist", response);
     });
+  }
+  addToCart(){
+    let reqData = {
+      bookId : this.getBookById.bookId,
+      quantity : 1
+    }
+    this.cart.addToCart(reqData).subscribe((response :any) =>{
+      console.log(response)
+    })
   }
 }

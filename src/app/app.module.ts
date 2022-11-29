@@ -23,6 +23,9 @@ import { HomeComponent } from './Component/home/home.component';
 import { GetBooksComponent } from './Component/get-books/get-books.component';
 import { QuickViewComponent } from './Component/quick-view/quick-view.component';
 import { WishlistComponent } from './Component/wishlist/wishlist.component';
+import { CartComponent } from './Component/cart/cart.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -36,14 +39,15 @@ import { WishlistComponent } from './Component/wishlist/wishlist.component';
     HomeComponent,
     GetBooksComponent,
     QuickViewComponent,
-    WishlistComponent
+    WishlistComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,BrowserModule,FormsModule, ReactiveFormsModule,MatToolbarModule,HttpClientModule,MatMenuModule,MatCardModule,
     AppRoutingModule,MatFormFieldModule,MatInputModule,MatCheckboxModule,MatIconModule,
-    MatSelectModule,MatExpansionModule
+    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
