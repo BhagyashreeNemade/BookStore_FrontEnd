@@ -10,7 +10,7 @@ export class FeedbackServiceService {
   token = localStorage.getItem('token')
   constructor(private httpService :HttpServiceService) { }
 
-  addFeedback(reqData : any){
+  addFeddback(reqData : any){
     let header = {
       headers : new HttpHeaders({
         'Content-type':'application/json',
@@ -20,7 +20,7 @@ export class FeedbackServiceService {
     return this.httpService.postAuthorised('https://localhost:44349/api/FeedBack/Add', reqData, true, header);
   }
 
-  getFeedback(bookId : any){
+  getAllFeedback(bookId : any){
     let header = {
       headers : new HttpHeaders({
         'Content-type':'application/json',

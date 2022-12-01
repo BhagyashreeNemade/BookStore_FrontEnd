@@ -11,17 +11,20 @@ import { WishlistServiceService } from 'src/app/services/wishlist-service.servic
 })
 export class QuickViewComponent implements OnInit {
   bookId = localStorage.getItem('bookId');
+  book:any;
+  rating:any=0.0;
+  comment:any;
+  feedbackList:any;
   getBookById: any;
   qty: any;
   review: any;
   star: any;
-  feedbackList : any;
   books: any;
   constructor(private getBook: BookServiceService, private feedback : FeedbackServiceService,private wishservice: WishlistServiceService,private cart:CartServiceService) { }
 
   ngOnInit(): void {
     this.getbook()
-    this.getFeedback()
+    this.getAllFeedback(this.bookId)
   }
   getbook() {
     this.getBook.getBookById(this.bookId).subscribe((response: any) => {
@@ -32,47 +35,34 @@ export class QuickViewComponent implements OnInit {
       console.log(this.qty);
     })
   }
-  onsubmit() {
-    let reqData = {
-      rating: this.star,
-      comment: this.review,
-      bookId: this.getBookById.bookId
-    }
-    this.feedback.addFeedback(reqData).subscribe((response : any) =>{
-      console.log(response);
-    })
-  }
-  rating1() {
-    this.star = 1
-    console.log(this.star)
-  }
-  rating2() {
-    this.star = 2
-    console.log(this.star)
-  }
-  rating3() {
-    this.star = 3
-    console.log(this.star)
-  }
-  rating4() {
-    this.star = 4
-    console.log(this.star)
-  }
-  rating5() {
-    this.star = 5
-    console.log(this.star)
-  }
-  getFeedback(){
 
-    this.feedback.getFeedback(this.bookId).subscribe((response : any) => {
-      console.log(response);
-      this.feedbackList = response.data
-      console.log(this.feedbackList)
-    })
+  
+  getAllFeedback(bookId: any){
+    this.feedback.getAllFeedback(bookId).subscribe((response: any) => {
+      console.log("GetAll feedback successful", response);
+      this.feedbackList = response.data;
+    });
+  }
+  addFeedback(){
+    let reqData = {
+      rating: parseInt(this.rating),
+      comment: this.comment,
+      BookId: this.getBookById.bookId
+    }
+    this.feedback.addFeddback(reqData).subscribe((response: any) => {
+      console.log("Feedback submitted successfully", response);
+      this.getAllFeedback(this.bookId);
+    });
+    this.comment='';
+    this.rating=0.0;
+  }
+ 
+  getShortName(name:any){
+    return name.split(' ').map((n:any) => n[0]).join('');
   }
   addToWishlist(){
     let reqData = {
-      BookId: this.getBookById.bookId,
+      bookId: this.getBookById.bookId,
     }
     this.wishservice.addToWishlist(reqData,this.bookId).subscribe((response: any) => {
       console.log("Added to wishlist", response);

@@ -26,7 +26,7 @@ import { WishlistComponent } from './Component/wishlist/wishlist.component';
 import { CartComponent } from './Component/cart/cart.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
@@ -47,7 +47,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppRoutingModule,
     BrowserAnimationsModule,BrowserModule,FormsModule, ReactiveFormsModule,MatToolbarModule,HttpClientModule,MatMenuModule,MatCardModule,
     AppRoutingModule,MatFormFieldModule,MatInputModule,MatCheckboxModule,MatIconModule,
-    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule
+    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule,MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
