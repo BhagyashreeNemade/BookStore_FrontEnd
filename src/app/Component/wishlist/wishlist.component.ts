@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BookServiceService } from 'src/app/services/book-service.service';
 import { WishlistServiceService } from 'src/app/services/wishlist-service.service';
 
 @Component({
@@ -7,35 +6,25 @@ import { WishlistServiceService } from 'src/app/services/wishlist-service.servic
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.scss']
 })
-export class WishlistComponent  implements OnInit {
-
-  wishListItems : any
-  qty : any;
-  getWishListBooks = new Array()
-  constructor(private wishListservice : WishlistServiceService, private books : BookServiceService) { }
+export class WishlistComponent implements OnInit {
+  wishlist:any;
+  defaultImage:any="https://www.prachiindia.com/ModuleFiles/Items/Cover_image.png";
+  constructor(private wish:WishlistServiceService) { }
 
   ngOnInit(): void {
-    this.getWishlist()
+    this.getWishlist();
   }
-  getWishlist() {
-    this.wishListservice.  getWishlist().subscribe((response : any) => {
-      console.log(response);
-      this.wishListItems = response.data
-      this.qty = this.wishListItems.length
-      this.wishListItems.forEach((element : any) =>{
-        console.log(element)
-        this.books.getBookById(element.bookId).subscribe((response : any)=>{
-          console.log(response)
-          this.getWishListBooks.push(response.data)
-        })
-      })
-      console.log(this.getWishListBooks)
-    })
+
+  getWishlist(){
+    this.wish.getWishlist().subscribe((response: any) => {
+      console.log("Got All wishlist Books", response.data);
+      this.wishlist = response.data;
+    });
   }
-  removeFromWishlist(wishListId:any){
-    console.log("bbbbbbbb",wishListId);
-    this.wishListservice.removeFromWishlist(wishListId).subscribe((response : any) =>{
-      console.log(response);
+
+  removeFromWishlist(wishistId:any){
+    this.wish.removeFromWishlist(wishistId).subscribe((response: any) => {
+      console.log("Removed",response.data);
       this.getWishlist();
     });
   }

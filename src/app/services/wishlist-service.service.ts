@@ -19,7 +19,7 @@ export class WishlistServiceService  {
         'Authorization': 'Bearer '+this.token
       })
     }
-    return this.http.getService('https://localhost:44349/api/Wishlist/GetAllWishlist',true,header)
+    return this.http.GetService('https://localhost:44349/Getwishlistitem',true,header)
   }
 
   addToWishlist(reqData:any ,bookId:any){
@@ -29,16 +29,16 @@ export class WishlistServiceService  {
         'Authorization': 'Bearer '+this.token
       })
     }
-    return this.http.postAuthorised('https://localhost:44349/api/Wishlist/Add?BookId='+bookId, reqData, true, header);
+    return this.http.PostService('https://localhost:44349/Addtowishlist?bookId='+bookId, reqData, true, header);
   }
 
-  removeFromWishlist(wishListId:any){
+  removeFromWishlist(wishlistId:any){
     let header={
       headers: new HttpHeaders({
         'Content-Type' : 'application/json',
         'Authorization': 'Bearer '+this.token
       })
     }
-    return this.http.DeleteService('https://localhost:44349/api/Wishlist/Delete?wishlistId='+wishListId,true,header)
+    return this.http.DeleteService('https://localhost:44349/Removefromwishlist?wishlistId='+wishlistId,true,header)
   }
 }

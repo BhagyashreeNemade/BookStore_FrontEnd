@@ -27,6 +27,9 @@ import { CartComponent } from './Component/cart/cart.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatDividerModule} from '@angular/material/divider';
+import { OrdersComponent } from './Component/orders/orders.component';
+import { OrderPlacedComponent } from './Component/order-placed/order-placed.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -40,14 +43,16 @@ import {MatDividerModule} from '@angular/material/divider';
     GetBooksComponent,
     QuickViewComponent,
     WishlistComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent,
+    OrderPlacedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,BrowserModule,FormsModule, ReactiveFormsModule,MatToolbarModule,HttpClientModule,MatMenuModule,MatCardModule,
     AppRoutingModule,MatFormFieldModule,MatInputModule,MatCheckboxModule,MatIconModule,
-    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule,MatDividerModule
+    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule,MatDividerModule,MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

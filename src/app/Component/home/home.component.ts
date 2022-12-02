@@ -1,20 +1,27 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnInit {
+  fullName: any = '';
+  search: any;
+  value:any;
+  constructor(private route:Router) { }
 
-  constructor(private router : Router) { }
-  ngOnDestroy(): void {
-    this.logout()
-  }
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/login');
+  ngOnInit(): void {
+    this.fullName = localStorage.getItem('name');
   }
 
+  logOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('mobile')
+    console.log('Logout success');
+    this.route.navigateByUrl('login');
+  }
+  
 }

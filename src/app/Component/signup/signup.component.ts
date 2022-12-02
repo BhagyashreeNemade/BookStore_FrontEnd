@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -8,41 +9,33 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  RegisterForm! : FormGroup;
+  signupForm! : FormGroup
   hide=true;
-  submitted = false;
-
-  constructor( private formBuilder : FormBuilder, private userService :UserServiceService) { }
+  constructor(private form:FormBuilder,private user:UserServiceService) { }
 
   ngOnInit(): void {
-    this.RegisterForm = this.formBuilder.group({
-      FullName: ['', Validators.required],
-      EmailId: ['', Validators.required],
-      Password: ['', Validators.required],
-      Mobile: ['', Validators.required]
+    this.signupForm = this.form.group({
+      fullname:['',[Validators.required,Validators.minLength(3)]],
+      email:['',[Validators.required,Validators.email]],
+      password:['',[Validators.required,Validators.minLength(8)]],
+      mobile:['',[Validators.required,Validators.pattern("[1-9]{1}[0-9]{9}")]]
     })
   }
-  onSubmit() {
-    this.submitted = true;
-    
 
-    if (this.RegisterForm.valid) {
-      console.log("valid data",this.RegisterForm.value);
-    console.log("do api call");
-      let reqdata = {
-        fullName: this.RegisterForm.value.FullName,
-        email: this.RegisterForm.value.EmailId,
-        password: this.RegisterForm.value.Password,
-        mobile_Number: this.RegisterForm.value.Mobile
+  onSubmit(){
+    if(this.signupForm.valid){
+      let data={
+        FullName:this.signupForm.value.fullname,
+        EmailId:this.signupForm.value.email,
+        Password:this.signupForm.value.password,
+        MobileNumber:this.signupForm.value.mobile
       }
-      this.userService.registerUser(reqdata).subscribe((Response: any) => {
-        console.log(Response);
-      })
+      this.user.Register(data).subscribe((res:any)=>{
+        console.log('Signup Successfull',res);
+      });
     }
     else{
-      console.log("invalid data",this.RegisterForm.value);
-      console.log("no api call");
+      console.log("Invalid data",this.signupForm.value);
     }
-  
   }
 }

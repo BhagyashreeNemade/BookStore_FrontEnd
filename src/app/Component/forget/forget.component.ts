@@ -24,7 +24,7 @@ export class ForgetComponent implements OnInit {
       let reqData = {
         emailId : this.forgotForm.value.email
       }
-      this.userService.forgot(reqData).subscribe((response : any) =>{
+      this.userService.Forgotpassword(reqData).subscribe((response : any) =>{
         console.log(response);
       })
       }

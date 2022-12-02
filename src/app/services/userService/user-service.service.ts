@@ -7,47 +7,48 @@ import { HttpServiceService } from '../httpService/http-service.service';
   providedIn: 'root'
 })
 export class UserServiceService {
-  token = localStorage.getItem('token');
+  token : any;
 
+  constructor(private httpservice:HttpServiceService) { 
+    this.token = localStorage.getItem("token");
+  }
 
-  constructor(private httpServise : HttpServiceService) { }
-
+  Register(data: any){
+    console.log(data);
+    let httpOptions = {
+      headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      })
+    }
+    return this.httpservice.PostService('https://localhost:44349/Register',data,false,httpOptions)
+  }
+  Login(data: any){
+    console.log(data);
+    let httpOptions = {
+      headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      })
+    }
+    return this.httpservice.PostService('https://localhost:44349/Login',data,true,httpOptions)  
+  }
   
-  registerUser(reqdata : any){
-    let header = {
-      headers:new HttpHeaders({
-        'Content-type':'application/json',
+  Forgotpassword(data: any){
+    console.log(data);
+    let httpOptions = {
+      headers: new HttpHeaders({
+      'Content-type': 'application/json',
       })
     }
-    return this.httpServise.postService('https://localhost:44349/api/User/Register', reqdata, false, header);
+    return this.httpservice.PostService('https://localhost:44349/Forgotpassword?email=' +data.email,data,true,httpOptions)
   }
-
-  login(reqdata:any){
-    let header={
-      headers:new HttpHeaders({
-        'Content-Type': 'application/json'
+  Resetpassword(data: any,token:any){
+    console.log(data);
+    let httpOptions = {
+      headers: new HttpHeaders({
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + token
       })
     }
-    return this.httpServise.postService('https://localhost:44349/api/User/Login',reqdata,false,header)
-  }
- 
-
-  forgot(reqData :any){
-    let header = {
-      headers : new HttpHeaders({
-        'Content-type':'application/json',
-    })
-  }
-  return this.httpServise.postService('https://localhost:44349/api/User/ForgotPassword?emailId='+ reqData.emailId, {}, false , header);
-  }
-
-  reset(reqData:any){
-    let header = {
-      headers : new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':'Bearer '+this.token
-      })
-    }
-    return this.httpServise.postAuthorised(`https://localhost:44349/api/User/Reset?resetPassword=`+reqData.resetPassword+`&confirmPassword=`+reqData.confirmPassword,{}, true , header);
+    return this.httpservice.PostService('https://localhost:44349/Resetpassword',data,true,httpOptions)
   }
 }

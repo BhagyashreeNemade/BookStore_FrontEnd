@@ -9,22 +9,25 @@ import { GetBooksComponent } from './Component/get-books/get-books.component';
 import { QuickViewComponent } from './Component/quick-view/quick-view.component';
 import { WishlistComponent } from './Component/wishlist/wishlist.component';
 import { CartComponent } from './Component/cart/cart.component';
+import { OrdersComponent } from './Component/orders/orders.component';
+import { OrderPlacedComponent } from './Component/order-placed/order-placed.component';
+
 
 const routes: Routes = [
-  {path:'register', component:SignupComponent},
-  {path:'login', component:LoginComponent},
-  {path:'forgot', component : ForgetComponent},
-  {path:'reset/:token', component : ResetComponent},
-  {path :'home', component : HomeComponent,
-  children : [
-    {path:'', redirectTo:"/home/getbooks", pathMatch:'full' },
-    { path : 'getbooks', component:GetBooksComponent},
-    { path : 'quickView', component:QuickViewComponent},
-    { path: 'wishlist',component:WishlistComponent},
-    { path: 'cart',component:CartComponent}
-  ]
+  {path:'signup',component:SignupComponent},
+  {path:'login',component:LoginComponent},
+  {path:'forgetpassword',component:ForgetComponent},
+  {path:'resetpassword/:token',component:ResetComponent},
+  {path:'home',component:HomeComponent,
+  children:[
+    {path:'books',component:GetBooksComponent},
+    {path:'quickview',component:QuickViewComponent},
+    {path:'cart',component:CartComponent},
+    {path:'wishlist',component:WishlistComponent},
+    {path:'orderplaced',component:OrderPlacedComponent},
+    {path:'orders',component:OrdersComponent}
+  ]  
 }
-
 ];
 
 @NgModule({

@@ -6,28 +6,30 @@ import { HttpServiceService } from './httpService/http-service.service';
   providedIn: 'root'
 })
 export class BookServiceService {
-  token = localStorage.getItem('token');
-constructor(private httpService : HttpServiceService) { }
+  token:any;
+  constructor(private http:HttpServiceService) {
+    this.token=localStorage.getItem('token')
+   }
 
-getallbooks(){
-  let header = {
-    headers : new HttpHeaders({
-      'Content-type':'application/json',
-      'Authorization':'Bearer '+this.token
-    })
+   getAllBooks(){
+    console.log("Getting books");
+
+    let header={
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+      })
+    }
+    return this.http.GetService('https://localhost:44349/Getallbooks',true,header)
   }
-  console.log(this.token);
-  return this.httpService.getService('https://localhost:44349/api/Book/GetAllBook',true, header);
-}
-getBookById(bookId:any){
-  let header = {
-    headers : new HttpHeaders ({
-      'Content-type':'application/json',
-      'Authorization':'Bearer '+this.token
-    })
+
+  getBookById(bookId:any){
+    console.log("Getting books");
+
+    let header={
+      headers: new HttpHeaders({
+        'Content-Type' : 'application/json',
+      })
+    }
+    return this.http.GetService('https://localhost:44349/GetbookbyId?bookId=' +bookId,true,header)
   }
-  return this.httpService.getService('https://localhost:44349/api/Book/GetBookById?BookId='+bookId, true, header);
 }
-}
-
-

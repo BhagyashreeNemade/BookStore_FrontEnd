@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
@@ -9,38 +10,30 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+  loginForm! : FormGroup
   hide=true;
-  submitted = false;
-
-  constructor(private formBuilder: FormBuilder, private userService :UserServiceService,private router :Router) { }
-    
+  constructor(private form:FormBuilder,private user:UserServiceService,private router:Router) { }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+    this.loginForm = this.form.group({
+      email:['',[Validators.required,Validators.email]],
+      password:['', Validators.required],
     })
-  }
-  onSubmit() {
-  this.submitted = true;
-  console.log(this.loginForm.value);
-  if (this.loginForm.valid) {
-    let reqdata = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password
-    }
-    this.userService.login(reqdata).subscribe((Response: any) => {
-      console.log(Response);
-      localStorage.setItem("token", Response.token);
-      this.router.navigateByUrl("/home")
-    })
-  }
-  else {
-    console.log("invalid data", this.loginForm.value);
-    console.log("no api call");
   }
 
+  onSubmit(){
+    if(this.loginForm.valid){
+      let data={
+        EmailId:this.loginForm.value.email,
+        Password:this.loginForm.value.password
+      }
+      this.user.Login(data).subscribe((res:any)=>{
+        console.log('Login Successfull',res);
+        localStorage.setItem('token',res.data.token);
+        localStorage.setItem('name',res.data.fullName);
+        localStorage.setItem('mobile',res.data.mobileNumber);
+        this.router.navigateByUrl('home/books'); 
+      });
+    }
   }
 }
-

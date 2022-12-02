@@ -18,7 +18,7 @@ export class CartServiceService {
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.http.getService('https://localhost:44349/api/Cart/GetAllCartlist', true, header);
+    return this.http.GetService('https://localhost:44349/Getcartitem', true, header);
   }
 
   addToCart(reqData: any) {
@@ -28,17 +28,17 @@ export class CartServiceService {
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.http.postAuthorised('https://localhost:44349/api/Cart/Add', reqData, true, header);
+    return this.http.PostService('https://localhost:44349/Addtocart', reqData, true, header);
   }
 
-  updateCart(cartId: any, cartQty: any) {
+  updateCart(cartId: any, bookQty: any) {
     let header = {
       headers: new HttpHeaders({
         'Content-type': 'application/json',
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.http.PutService('https://localhost:44349/api/Cart/UpdateQty?cartId=' + cartId + '&cartQty=' + cartQty, cartId, true, header);
+    return this.http.PutService('https://localhost:44349/Updatecart?cartId=' + cartId + '&bookQty=' + bookQty, cartId, true, header);
   }
 
   removeFromCart(cartId: any) {
@@ -48,6 +48,6 @@ export class CartServiceService {
         'Authorization': 'Bearer ' + this.token
       })
     }
-    return this.http.DeleteService('https://localhost:44349/api/Cart/Delete?cartId='+cartId, true, header);
+    return this.http.DeleteService('https://localhost:44349/Removefromcart?cartId='+cartId, true, header);
   }
 }

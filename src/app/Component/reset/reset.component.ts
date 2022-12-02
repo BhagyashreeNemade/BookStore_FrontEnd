@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
+
 
 @Component({
   selector: 'app-reset',
@@ -8,28 +10,32 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
   styleUrls: ['./reset.component.scss']
 })
 export class ResetComponent implements OnInit {
-  resetForm!: FormGroup;
-  submitted = false;
 
-  constructor(private formBuilder: FormBuilder,private userService :UserServiceService) { }
+  resetForm! : FormGroup;
+  hide=true;
+  hide1=true;
+  token: any;
+  constructor(private form:FormBuilder,private activate:ActivatedRoute,private user:UserServiceService,
+    private router:Router) { }
 
   ngOnInit(): void {
-    this.resetForm = this.formBuilder.group({
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+    this.resetForm = this.form.group({
+      password:['',[Validators.required,Validators.minLength(8)]],
+      confirmpassword:['',[Validators.required,Validators.minLength(8)]],
     })
+    this.token= this.activate.snapshot.paramMap.get('token');
   }
+
   onSubmit(){
-    this.submitted = true;
-    if(this.resetForm.valid){
-    console.log('valid', this.resetForm.value)
-    let reqData = {
-      resetPassword : this.resetForm.value.password,
-      confirmPassword: this.resetForm.value.confirmPassword
-    }
-    this.userService.reset(reqData).subscribe((response : any) =>{
-      console.log(response);
-    })
+    if (this.resetForm.valid) {
+      let reqData = {
+        Password: this.resetForm.value.password,
+        ConfirmPassword: this.resetForm.value.confirmpassword
+      }
+      this.user.Resetpassword(reqData, this.token).subscribe((response: any) => {
+        console.log("Password changed successfully", response);
+        this.router.navigateByUrl('login')
+      });
     }
   }
 }

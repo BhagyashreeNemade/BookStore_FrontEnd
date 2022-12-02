@@ -1,64 +1,101 @@
-.main{
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(183, 186, 186);
-    height: 100%;
-}
-.div-1{
-    border: 0px solid black;
-    max-width: 280px;
-    max-height: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
-    background-color: white;
-    padding: 50px 30px;
-}
-.div-2{
-    border: 0px solid black;
-    max-width: 350px;
-    max-height: fit-content;
-    display: flex;
-    gap: 25px;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding: 30px 40px;
-}
-.buttons{
-    border:none; 
-    background:none;
+.outer-container{
+    background-color: #878787;
+    height: 100vh;
+  }
+  
+  .logo-container{
+    width: 624px;
+    height: 391px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 21px;
+  }
+  .logo{
+    block-size: 245px;
+    border-radius: 50%;
+    margin-left: 50px;
+  }
+  .text{
+    text-align: left;
+    font: normal normal bold 16px/20px Roboto;
+    letter-spacing: 0px;
+    color: #0A0102;
+    margin-top: 30px;
+    margin-left: 80px;
+    opacity: 1;
+  }
+  
+  .login-signup{
+    width: 389px;
+    height: 450px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #E4E4E4;
+    border-radius: 6px;
+    opacity: 1;
+    margin-left: -290px;
+  }
+  .line2{
+    width: 30px;
+    height: 6px;
+    background: #A03037 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+  }
+  .line{
+    width: 30px;
+    height: 6px;
+    background: #F5F5F5 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+  }
+  .header {
+    margin-bottom: 20px;
+  }
+  .login{
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #878787;
+  }
+  .signup{
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    color: #0A0102;
+  }
+  .signup-div{
+    padding-left: 80px;
+  }
+  
+  button {
+    background-color: #F5F5F5;
+    border: none;
     cursor: pointer;
-}
-.buttons-font{
-    font-weight: 600;
-    font-size: 20px;
-}
-.button-signup{
-    font-weight: 500;
-    font-size: 15px;
-    background-color: rgb(186, 32, 32);
-    border-radius: 5px;
+  }
+  
+  mat-form-field{
     width: 100%;
-    margin-left: 5px;
-    height: 35px;
+  }
+  
+  .btn-primary{
+    width: 100%;
     margin-top: 10px;
-}
-.div-1-span{
-    font-weight: 550;
-    font-size: 15px;
-}
-.div-2-button{
-    display: flex;
-    gap: 25px;
-}
-.input-field{
-    width: 100%;
-    height: 25px;
-}
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    background-color: #A03037;
+  }
+  
+  ::ng-deep .mat-form-field-flex {
+    height: 45px !important;
+    margin-top: 0px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none;
+    padding: 0px;
+  }
+  ::ng-deep .mat-form-field-infix{
+    border: none;
+    padding: 0px;
+  }
+  ::ng-deep .mat-form-field-wrapper{
+    padding: 0px;
+  }

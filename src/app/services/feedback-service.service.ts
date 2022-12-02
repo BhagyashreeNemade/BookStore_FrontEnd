@@ -7,26 +7,28 @@ import { HttpServiceService } from './httpService/http-service.service';
 })
 export class FeedbackServiceService {
 
-  token = localStorage.getItem('token')
-  constructor(private httpService :HttpServiceService) { }
+  token:any;
 
-  addFeddback(reqData : any){
-    let header = {
-      headers : new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':'Bearer '+this.token
-      })
-    }
-    return this.httpService.postAuthorised('https://localhost:44349/api/FeedBack/Add', reqData, true, header);
+  constructor(private http:HttpServiceService) { 
+    this.token = localStorage.getItem('token');
   }
 
-  getAllFeedback(bookId : any){
+  addFeddback(reqData:any){
     let header = {
-      headers : new HttpHeaders({
-        'Content-type':'application/json',
-        'Authorization':'Bearer '+this.token
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+        'Authorization': 'Bearer '+this.token
       })
     }
-    return this.httpService.getService('https://localhost:44349/api/FeedBack/GetAll?bookId='+bookId, true, header);
+    return this.http.PostService('https://localhost:44349/Addfeedback', reqData, true, header);
+  }
+
+  getAllFeedback(bookId:any){
+    let header = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json',
+      })
+    }
+    return this.http.GetService(`https://localhost:44349/Getfeedback?bookId=` +bookId,false,header)
   }
 }
