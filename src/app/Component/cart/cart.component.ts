@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
     private router:Router) { }
 
   ngOnInit(): void {
-
+    this.bookId = localStorage.getItem('bookId');
     this.fullName = localStorage.getItem('name');
     this.mobileNumber = localStorage.getItem('mobile');
     this.getCartlist();
