@@ -11,6 +11,7 @@ import { WishlistComponent } from './Component/wishlist/wishlist.component';
 import { CartComponent } from './Component/cart/cart.component';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { OrderPlacedComponent } from './Component/order-placed/order-placed.component';
+import { AuthguardGuard } from './authguard.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'forgetpassword',component:ForgetComponent},
   {path:'resetpassword/:token',component:ResetComponent},
-  {path:'home',component:HomeComponent,
+  {path:'home',component:HomeComponent, canActivate:[AuthguardGuard],
   children:[
     {path:'books',component:GetBooksComponent},
     {path:'quickview',component:QuickViewComponent},

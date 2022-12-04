@@ -2,15 +2,15 @@
     <mat-toolbar class="color" fxLayoutAlign="space-between center">
         <div class="header" fxLayout="row" fxLayoutAlign="start center">
             <div class="logo">
-                <img src="../../../assets/education.png">
+                <img src="../../../assets/education.png" (click)="home()">
             </div>
-            <div class="logo-name">
-                <span class="text" routerLink="/home/books">Bookstore</span>
+            <div class="logo-name" (click)="home()">
+                <span class="text">Bookstore</span>
             </div>
 
             <div class="search">
                 <img src="../../../assets/search_icon.svg">
-                <input class="search-input" type="text" placeholder="Search...">
+                <input class="search-input" type="text" placeholder="Search..." (keyup)="searchTitle($event)">
             </div>
 
             <div class="profile-cart" fxLayout="row" style=" background-color: #A03037;">

@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { HttpServiceService } from './http-service.service';
@@ -6,7 +7,10 @@ describe('HttpServiceService', () => {
   let service: HttpServiceService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [HttpServiceService]
+    });
     service = TestBed.inject(HttpServiceService);
   });
 

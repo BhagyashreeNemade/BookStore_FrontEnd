@@ -30,6 +30,10 @@ import {MatDividerModule} from '@angular/material/divider';
 import { OrdersComponent } from './Component/orders/orders.component';
 import { OrderPlacedComponent } from './Component/order-placed/order-placed.component';
 import {MatButtonModule} from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthguardserviceService } from './authguardservice.service';
+import { FilterPipe } from './Pipes/filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
@@ -45,16 +49,17 @@ import {MatButtonModule} from '@angular/material/button';
     WishlistComponent,
     CartComponent,
     OrdersComponent,
-    OrderPlacedComponent
+    OrderPlacedComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,BrowserModule,FormsModule, ReactiveFormsModule,MatToolbarModule,HttpClientModule,MatMenuModule,MatCardModule,
     AppRoutingModule,MatFormFieldModule,MatInputModule,MatCheckboxModule,MatIconModule,
-    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule,MatDividerModule,MatButtonModule
+    MatSelectModule,MatExpansionModule,MatRadioModule,FlexLayoutModule,MatDividerModule,MatButtonModule,MatSnackBarModule,NgxPaginationModule
   ],
-  providers: [],
+  providers: [AuthguardserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

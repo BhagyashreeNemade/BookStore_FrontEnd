@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookServiceService } from 'src/app/services/book-service.service';
+import { DataServiceService } from 'src/app/services/data-service.service';
 
 @Component({
   selector: 'app-get-books',
@@ -13,13 +14,23 @@ export class GetBooksComponent implements OnInit {
   searchString:any;
   totalbooks:any;
   page: number = 1;
+  subscription:any;
+  message:any;
+  searchWord:any;
   
-  constructor(private bookser:BookServiceService) { }
+  constructor(private bookser:BookServiceService, private data:DataServiceService) { }
 
   ngOnInit(): void {
     
   
     this.getAllBooks();
+    this.subscription = this.data.currentData.subscribe(message => {
+      this.message = message;
+      console.log("display card search data======", message.data[0]);
+      this.searchWord=message.data[0]
+      // this.getAllNotes();
+    })
+  
   }
 
   getAllBooks(){

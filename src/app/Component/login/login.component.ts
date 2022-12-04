@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/userService/user-service.service';
 
@@ -12,13 +12,19 @@ import { UserServiceService } from 'src/app/services/userService/user-service.se
 export class LoginComponent implements OnInit {
   loginForm! : FormGroup
   hide=true;
-  constructor(private form:FormBuilder,private user:UserServiceService,private router:Router) { }
+  users = '1';
+  openSnackBar() {
+    this._snackBar.open;
+  }
+
+  constructor(private form:FormBuilder,private user:UserServiceService,private router:Router,private _snackBar : MatSnackBar) { }
 
   ngOnInit(): void {
     this.loginForm = this.form.group({
       email:['',[Validators.required,Validators.email]],
       password:['', Validators.required],
     })
+    localStorage.setItem('SeesionUser',this.users) 
   }
 
   onSubmit(){
@@ -33,6 +39,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('name',res.data.fullName);
         localStorage.setItem('mobile',res.data.mobileNumber);
         this.router.navigateByUrl('home/books'); 
+        this._snackBar.open('Login Successfully', '', { duration: 2000 });
       });
     }
   }
